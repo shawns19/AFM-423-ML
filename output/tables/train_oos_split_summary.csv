@@ -1,0 +1,7 @@
+"metric","value"
+"total_rows_feature_matrix","410"
+"training_only_rows_before_2007","181"
+"oos_rows_2007_onward","229"
+"retraining_events","39"
+"first_oos_prediction_date","2007-01-31"
+"last_oos_prediction_date","2026-01-31"
