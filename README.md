@@ -1,27 +1,14 @@
 # Machine Learning for Market Regime Detection in Dynamic Factor Allocation
 
-R code and outputs for the report above: data ingestion (Kenneth French and FRED), preprocessing, regime labeling, out-of-sample model training, backtesting, and figure generation.
+R pipeline for the project: pull factor and macro data, build regime labels, train classifiers, backtest strategies, and produce figures and summary tables.
 
-## Repository layout
+## Setup
 
-| Path | Version control |
-|------|------------------|
-| `src/` | Tracked — R scripts |
-| `output/figures/`, `output/tables/` | Tracked — report figures and summary tables |
-| `docs/` | Tracked — `DATA_DICTIONARY.md` (variable definitions) |
-| `data_raw/`, `data_processed/` | **Not** tracked (large / regenerable; see `.gitignore`) |
+R 4.x and packages: `quantmod`, `zoo`, `depmixS4`, `xgboost`, `pROC`, `ggplot2`, `scales`, `tidyr`, `dplyr` (scripts install missing packages when possible).
 
-After cloning, the repo root is the project root: `README.md`, `src/`, `output/`, `docs/`, etc. Run the pipeline locally to recreate `data_raw/` and `data_processed/` (ignored by Git), or keep a local copy.
+## Run
 
-## Requirements
-
-- R 4.x
-- R packages: `quantmod`, `zoo`, `depmixS4`, `xgboost`, `pROC`, `ggplot2`, `scales`, `tidyr`, `dplyr`  
-  Missing packages are installed automatically on first run when possible.
-
-## Execution
-
-From the repository root (where `src/` lives):
+From the folder that contains `src/`:
 
 ```bash
 Rscript src/01_pull_data.R
@@ -32,7 +19,7 @@ Rscript src/05_backtest.R
 Rscript src/06_make_figures.R
 ```
 
-`resolve_project_root()` in each script must resolve to this same directory. By default it accepts a working directory whose folder name is `gpr2`; if your clone has another name, rename that folder or edit `resolve_project_root()` to match your path.
+Scripts write under `data_raw/`, `data_processed/`, and `output/`. Variable definitions are in `docs/DATA_DICTIONARY.md`.
 
 ## Scripts
 
@@ -44,7 +31,3 @@ Rscript src/06_make_figures.R
 | `04_train_models.R` | Expanding-window training; logistic regression and XGBoost; OOS predictions |
 | `05_backtest.R` | Static benchmark and dynamic strategies; transaction costs |
 | `06_make_figures.R` | Export figures to `output/figures/` |
-
-## Reproducibility
-
-Random seeds are set where required for stochastic components. Methodology, definitions, and reported results are documented in the written report.
