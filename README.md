@@ -10,7 +10,6 @@ R code and outputs for the report above: data ingestion (Kenneth French and FRED
 | `output/figures/`, `output/tables/` | Tracked — report figures and summary tables |
 | `docs/` | Tracked — `DATA_DICTIONARY.md` (variable definitions) |
 | `data_raw/`, `data_processed/` | **Not** tracked (large / regenerable; see `.gitignore`) |
-| `report_draft/` | **Not** tracked (working drafts) |
 
 After cloning, the repo root is the project root: `README.md`, `src/`, `output/`, `docs/`, etc. Run the pipeline locally to recreate `data_raw/` and `data_processed/` (ignored by Git), or keep a local copy.
 
